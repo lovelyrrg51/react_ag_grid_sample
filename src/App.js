@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
@@ -9,13 +8,13 @@ class App extends Component {
     super (props);
     this.state = {
       columnDefs: [{
-        headerName: "Product_Id", field: "id"
+        headerName: "Product_Id", field: "id", sortable: true, resizable: true, tooltipField: 'id'
       }, {
-        headerName: "Product_Name", field: "name"
+        headerName: "Product_Name", field: "name", sortable: true, resizable: true, tooltipField: 'name'
       }, {
-        headerName: "Product_Category", field: "category"
+        headerName: "Product_Category", field: "category", sortable: true, resizable: true, tooltipField: 'category'
       }, {
-        headerName: "Product_Price", field: "price"
+        headerName: "Product_Price", field: "price", sortable: true, resizable: true, tooltipField: 'price'
       }],
       rowData: [{
         id : "1", name: "Earphone", category: "Electronics", price:100
@@ -31,6 +30,10 @@ class App extends Component {
     }
   }
 
+  onGridReady(params) {
+
+  }
+
   render() {
     return (
       <div
@@ -43,6 +46,7 @@ class App extends Component {
         <AgGridReact
           columnDefs={this.state.columnDefs}
           rowData={this.state.rowData}
+          onGridReady={this.onGridReady}
         >
         </AgGridReact>
       </div>
